@@ -1,0 +1,14 @@
+# docker pull frrouting/frr
+# docker run -d frrouting/frr
+# docker exec -it [CONTAINER ID] sh
+
+# sed -i -e 's/^bgpd=no/bgpd=yes/' \
+       -e 's/^ospfd=no/ospfd=yes/' \
+       -e 's/^isisd=no/isisd=yes/' /etc/frr/daemons
+
+# echo "service integrated-vtysh-config" > /etc/frr/vtysh.conf
+# echo "hostname frr" >> /etc/frr/vtysh.conf
+
+# docker stop [CONTAINER ID] && docker commit [//]
+
+docker pull ammonschiffer/achiffe_router
