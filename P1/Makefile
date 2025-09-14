@@ -10,4 +10,7 @@ build:
 	docker build -t $(TAG_ROUTER) -f $(DOCKERFILE_ROUTER) .
 	docker build -t $(TAG_HOST) -f $(DOCKERFILE_HOST) .
 
+prune:
+	docker system prune --all
+
 .PHONY: all build run
