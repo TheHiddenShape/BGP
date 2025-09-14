@@ -13,4 +13,4 @@ build:
 prune:
 	docker system prune --all
 
-.PHONY: all build run
+.PHONY: all build run prune
