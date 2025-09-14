@@ -1,5 +1,5 @@
-DOCKERFILE_ROUTER := P1/Dockerfile.router
-DOCKERFILE_HOST := P1/Dockerfile.host
+DOCKERFILE_ROUTER := router/Dockerfile.router
+DOCKERFILE_HOST := host/Dockerfile.host
 
 TAG_ROUTER := "aschiffe_r1"
 TAG_HOST := "aschiffe_h1"
