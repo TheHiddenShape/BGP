@@ -14,8 +14,8 @@ build:
 	docker build -t $(TAG_HOST) -f $(DOCKERFILE_HOST) .
 
 run: build
-	docker run -d --hostname $(HOSTNAME_R1) --privileged $(TAG_ROUTER)
-	docker run -d --hostname $(HOSTNAME_H1) --privileged $(TAG_HOST)
+	docker run - --name $(HOSTNAME_R1) --hostname $(HOSTNAME_R1) --privileged $(TAG_ROUTER)
+	docker run -d --name $(HOSTNAME_H1) --hostname $(HOSTNAME_H1) --privileged $(TAG_HOST)
 
 stop_containers:
 	docker stop $(HOSTNAME_R1) || true
