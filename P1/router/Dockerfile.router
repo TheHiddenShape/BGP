@@ -1,5 +1,7 @@
 FROM frrouting/frr
 
+LABEL node_type="router"
+
 RUN sed -i -e 's/^bgpd=no/bgpd=yes/' \
            -e 's/^ospfd=no/ospfd=yes/' \
            -e 's/^isisd=no/isisd=yes/' /etc/frr/daemons
