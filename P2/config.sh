@@ -14,16 +14,16 @@ for container_id in $(docker ps -q); do
     echo "Checking container $container_id with hostname '$hostname' and node_type '$node_type'"
     if [[ "$node_type" == "router" && "$hostname" =~ -1$ ]]; then
       echo "Container $container_id ($hostname): executing router-1 vxlan config"
-      cat /router/router1.sh | docker exec -i $container_id bash -s -- $mode
+      cat ./router/router1.sh | docker exec -i $container_id bash -s -- $mode
     elif [[ "$node_type" == "router" && "$hostname" =~ -2$ ]]; then
       echo "Container $container_id ($hostname): executing router-2 vxlan config"
-      cat /router/router2.sh | docker exec -i $container_id bash -s -- $mode
+      cat ./router/router2.sh | docker exec -i $container_id bash -s -- $mode
     elif [[ "$node_type" == "host" && "$hostname" =~ -1$ ]]; then
       echo "Container $container_id ($hostname): executing host-1 ip addr config"
-      cat /host/host1.sh | docker exec -i $container_id bash -s -- $mode
+      cat ./host/host1.sh | docker exec -i $container_id bash -s -- $mode
     elif [[ "$node_type" == "host" && "$hostname" =~ -2$ ]]; then
       echo "Container $container_id ($hostname): executing host-2 ip addr config"
-      cat /host/host2.sh | docker exec -i $container_id bash -s -- $mode
+      cat ./host/host2.sh | docker exec -i $container_id bash -s -- $mode
     else
       echo "Container $container_id ($hostname): hostname does not match -1 or -2 pattern"
     fi
