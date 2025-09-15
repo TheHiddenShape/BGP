@@ -2,7 +2,7 @@
 mode="$1"
 
 if [ "$#" -ne 1 ]; then
-  echo "You should provide mode arg."
+  echo "You should provide either 'static' or 'dynamic' mode"
   exit 1
 fi
 
