@@ -1,10 +1,4 @@
 #!/bin/bash
-mode="$1"
-
-if [ "$#" -ne 1 ]; then
-  echo "You should provide either 'static' or 'dynamic' mode"
-  exit 1
-fi
 
 for container_id in $(docker ps -q); do
   node_type=$(docker inspect --format='{{ index .Config.Labels "node_type" }}' "$container_id")
@@ -13,19 +7,28 @@ for container_id in $(docker ps -q); do
     hostname=$(docker inspect --format='{{ .Config.Hostname }}' "$container_id")
     echo "Checking container $container_id with hostname '$hostname' and node_type '$node_type'"
     if [[ "$node_type" == "router" && "$hostname" =~ -1$ ]]; then
-      echo "Container $container_id ($hostname): executing router-1 vxlan config"
+      echo "Container $container_id ($hostname): executing router-1 (leaf router) vxlan config"
       cat ./router/router1.sh | docker exec -i $container_id bash -s -- $mode
     elif [[ "$node_type" == "router" && "$hostname" =~ -2$ ]]; then
-      echo "Container $container_id ($hostname): executing router-2 vxlan config"
+      echo "Container $container_id ($hostname): executing router-2 (leaf router) vxlan config"
       cat ./router/router2.sh | docker exec -i $container_id bash -s -- $mode
+    elif [[ "$node_type" == "router" && "$hostname" =~ -3$ ]]; then
+      echo "Container $container_id ($hostname): executing router-3 (leaf router) vxlan config"
+      cat ./router/router3.sh | docker exec -i $container_id bash -s -- $mode
+    elif [[ "$node_type" == "router" && "$hostname" =~ -3$ ]]; then
+      echo "Container $container_id ($hostname): executing router-4 (spine router) vxlan config"
+      cat ./router/router4.sh | docker exec -i $container_id bash -s -- $mode
     elif [[ "$node_type" == "host" && "$hostname" =~ -1$ ]]; then
       echo "Container $container_id ($hostname): executing host-1 ip addr config"
       cat ./host/host1.sh | docker exec -i $container_id bash -s -- $mode
     elif [[ "$node_type" == "host" && "$hostname" =~ -2$ ]]; then
       echo "Container $container_id ($hostname): executing host-2 ip addr config"
       cat ./host/host2.sh | docker exec -i $container_id bash -s -- $mode
+    elif [[ "$node_type" == "host" && "$hostname" =~ -3$ ]]; then
+      echo "Container $container_id ($hostname): executing host-3 ip addr config"
+      cat ./host/host3.sh | docker exec -i $container_id bash -s -- $mode
     else
-      echo "Container $container_id ($hostname): hostname does not match -1 or -2 pattern"
+      echo "Container $container_id ($hostname): hostname does not match -1 / -2 / -3 / -4 pattern"
     fi
   fi
 done

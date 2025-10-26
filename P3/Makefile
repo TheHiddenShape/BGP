@@ -12,5 +12,3 @@ ROUTER_SPINE_CONFIG := $(ROUTER_DIR)/spine_router.sh
 
 all:
 	bash config.sh
-
-.PHONY:
