@@ -15,7 +15,7 @@ for container_id in $(docker ps -q); do
     elif [[ "$node_type" == "router" && "$hostname" =~ -3$ ]]; then
       echo "Container $container_id ($hostname): executing router-3 (leaf router) vxlan config"
       cat ./router/leaf_router3.sh | docker exec -i $container_id bash -s -- $mode
-    elif [[ "$node_type" == "router" && "$hostname" =~ -3$ ]]; then
+    elif [[ "$node_type" == "router" && "$hostname" =~ -4$ ]]; then
       echo "Container $container_id ($hostname): executing router-4 (spine router) vxlan config"
       cat ./router/spine_router4.sh | docker exec -i $container_id bash -s -- $mode
     elif [[ "$node_type" == "host" && "$hostname" =~ -1$ ]]; then
