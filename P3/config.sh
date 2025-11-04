@@ -1,7 +1,7 @@
 #!/bin/bash
 
 MAX_RETRIES=5
-RETRY_INTERVAL=30
+RETRY_INTERVAL=10
 
 check_bgp_status() {
   local container_id=$1
