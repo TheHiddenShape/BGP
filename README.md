@@ -86,8 +86,10 @@ O>* 10.1.1.4/30 [110/20] via 10.1.1.1, eth0, weight 1, 00:00:18
 O>* 10.1.1.8/30 [110/20] via 10.1.1.1, eth0, weight 1, 00:00:18
 ```
 For a network with N VTEPs, the total number of BGP connections required in a **full mesh** (i.e., without RR) is given by the following formula:
+
 $$
 C = \frac{n(n-1)}{2}
 $$
+
 This results in exponential growth of BGP sessions, causing scalability issues and higher resource overhead.
 
