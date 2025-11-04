@@ -91,5 +91,5 @@ $$
 C = \frac{n(n-1)}{2}
 $$
 
-This results in exponential growth of BGP sessions, causing scalability issues and higher resource overhead.
+Where n is the total number of nodes and C is the number of unique links, this results in exponential growth of BGP sessions, causing scalability issues and higher resource overhead.
 
