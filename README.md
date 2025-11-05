@@ -93,3 +93,13 @@ $$
 
 Where n is the total number of nodes and C is the number of unique links, this results in exponential growth of BGP sessions, causing scalability issues and higher resource overhead.
 
+In order to generate a summary of the current bgp session & checking the state of our BGP pairs we use the following command
+
+```bash
+/ # vtysh -c "show bgp summary"
+```
+
+This command allows us to check the BGP EVPN table, the routes used for VXLAN/L2VPN routing
+```bash
+/ # vtysh -c "show bgp l2vpn evpn"
+```
