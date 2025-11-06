@@ -38,9 +38,11 @@ PID   USER     COMMAND
 ```
 
 ## Discovering a VXLAN
-In this section, we set up a VXLAN network topology. VXLAN is a tunneling technology that allows the creation of extended virtual local area networks (VLANs) over existing IP infrastructures.
+In this section, we set up a VXLAN (Virtual Extensible LAN) network topology. VXLAN is a tunneling technology that allows the creation of extended virtual local area networks (VLANs) over existing IP infrastructures. VXLAN encapsulates Layer 2 Ethernet frames within Layer 3 UDP packets, creating an overlay network that tunnels L2 traffic over an L3 underlay infrastructure, enabling scalable multi-tenant isolation across data centers by adding a 24-bit VXLAN Network Identifier (VNI) header.
 
 Our topology contains two remote hosts, each connected to their own router, with an L2 switch between the routers.
+
+set up: https://ammons-organization-1.gitbook.io/thehiddenshape/system-and-networks/building-networks-with-gns3#discovering-a-vxlan
 
 ### Packet transmission
 >host instance
@@ -69,8 +71,6 @@ bridge fdb show dev vxlan10
 # learned MAC addr
 bridge fdb show | grep <VNI>
 ```
-
-set up configuration: https://ammons-organization-1.gitbook.io/thehiddenshape/system-and-networks/building-networks-with-gns3#discovering-a-vxlan
 
 ## Discovering BGP with EVPN
 In this section, we will deploy a BGP EVPN with VXLAN solution in a Spine-Leaf architecture. 1 RR, 3 leafs, each associated with 1 host.
