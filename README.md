@@ -9,7 +9,7 @@ The purpose of this README is to compile useful commands and demonstrations, alo
 The first step is to configure our foundation machines, which will serve as the base for building our networks.
 We will need hosts and routers running FRRouting (FRR), an open-source routing protocol suite for Linux/Unix systems that implements various protocols such as BGP, OSPF and more.
 
-set up configuration: https://ammons-organization-1.gitbook.io/thehiddenshape/system-and-networks/building-networks-with-gns3#gns3-configuration-with-docker
+set up: https://ammons-organization-1.gitbook.io/thehiddenshape/system-and-networks/building-networks-with-gns3#gns3-configuration-with-docker
 
 > router instance, this list shows essentially the FRR (Free Range Routing)  routing daemons and supporting scripts.
 ```bash
