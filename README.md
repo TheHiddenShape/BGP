@@ -11,7 +11,7 @@ We will need hosts and routers running FRRouting (FRR), an open-source routing p
 
 set up: https://ammons-organization-1.gitbook.io/thehiddenshape/system-and-networks/building-networks-with-gns3#gns3-configuration-with-docker
 
-> router instance, this list shows essentially the FRR (Free Range Routing)  routing daemons and supporting scripts.
+> [router instance] this list shows essentially the FRR (Free Range Routing)  routing daemons and supporting scripts.
 ```bash
 / # ps
 PID   USER     COMMAND
@@ -27,7 +27,7 @@ PID   USER     COMMAND
   373 frr      /usr/lib/frr/staticd -d -F traditional -A 127.0.0.1
   377 root     {ps} /gns3/bin/busybox sh
 ```
-> host instance, busybox is a lightweight collection of Unix utilities bundled into a single executable, often used in embedded systems and minimal environments.
+> [host instance] busybox is a lightweight collection of Unix utilities bundled into a single executable, often used in embedded systems and minimal environments.
 ```bash
 / # ps
 PID   USER     COMMAND
@@ -45,7 +45,7 @@ Our topology contains two remote hosts, each connected to their own router, with
 set up: https://ammons-organization-1.gitbook.io/thehiddenshape/system-and-networks/building-networks-with-gns3#discovering-a-vxlan
 
 ### Packet transmission
->host instance
+> [host instance]
 ```bash
 # ping host 2 from host 1
 / # ping 30.1.1.2
@@ -59,10 +59,11 @@ PING 30.1.1.2 (30.1.1.2): 56 data bytes
 ```
 
 ### VXLAN setup
-> VTEP instance
+> [VTEP instance]
 ```bash
-# vxlan details static mode
 ip -d link show vxlan10
+
+# vxlan details static mode
 3: vxlan10: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master br0 state UNKNOWN mode DEFAULT group default qlen 1000
     link/ether 5a:e5:ab:1e:5e:4f brd ff:ff:ff:ff:ff:ff promiscuity 1 minmtu 68 maxmtu 65535 
     vxlan id 10 remote 10.1.1.1 local 10.1.1.2 dev eth0 srcport 0 0 dstport 4789 ttl auto ageing 300 udpcsum noudp6zerocsumtx noudp6zerocsumrx 
@@ -73,7 +74,7 @@ ip -d link show vxlan10
     vxlan id 10 group 239.1.1.1 dev eth0 srcport 0 0 dstport 4789 ttl auto ageing 300 udpcsum noudp6zerocsumtx noudp6zerocsumrx
 ```
 ### Forwarding table
-> VTEP instance
+> [VTEP instance]
 ```bash
 # show FDB
 / # bridge fdb show dev vxlan10
@@ -97,7 +98,7 @@ C>* 10.1.1.0/30 is directly connected, eth0, 00:01:08
 O>* 10.1.1.4/30 [110/20] via 10.1.1.1, eth0, weight 1, 00:00:18
 O>* 10.1.1.8/30 [110/20] via 10.1.1.1, eth0, weight 1, 00:00:18
 ```
-For a network with N VTEPs, the total number of BGP connections required in a **full mesh** (i.e., without RR) is given by the following formula:
+Without RR, for a network with N VTEP's, the total number of BGP connections required in a full mesh is given by the following formula:
 
 $$
 C = \frac{n(n-1)}{2}
