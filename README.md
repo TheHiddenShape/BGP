@@ -9,6 +9,8 @@ The purpose of this README is to compile useful commands and demonstrations, alo
 The first step is to configure our foundation machines, which will serve as the base for building our networks.
 We will need hosts and routers running FRRouting (FRR), an open-source routing protocol suite for Linux/Unix systems that implements various protocols such as BGP, OSPF and more.
 
+set up configuration: https://ammons-organization-1.gitbook.io/thehiddenshape/system-and-networks/building-networks-with-gns3#gns3-configuration-with-docker
+
 > router instance, this list shows essentially the FRR (Free Range Routing)  routing daemons and supporting scripts.
 ```bash
 / # ps
@@ -34,7 +36,6 @@ PID   USER     COMMAND
   315 root     /gns3/bin/busybox sh
   322 root     {ps} /gns3/bin/busybox sh
 ```
-set up configuration: https://ammons-organization-1.gitbook.io/thehiddenshape/system-and-networks/building-networks-with-gns3#gns3-configuration-with-docker
 
 ## Discovering a VXLAN
 In this section, we set up a VXLAN network topology. VXLAN is a tunneling technology that allows the creation of extended virtual local area networks (VLANs) over existing IP infrastructures.
