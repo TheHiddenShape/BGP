@@ -6,6 +6,9 @@ You can find the complete documentation for this project at https://ammons-organ
 The purpose of this README is to compile useful commands and demonstrations, along with the associated concepts for each part.
 
 ## GNS3 configuration with Docker
+The first step is to configure our foundation machines, which will serve as the base for building our networks.
+We will need hosts and routers running FRRouting (FRR), an open-source routing protocol suite for Linux/Unix systems that implements various protocols such as BGP, OSPF and more.
+
 > router instance, this list shows essentially the FRR (Free Range Routing)  routing daemons and supporting scripts.
 ```bash
 / # ps
