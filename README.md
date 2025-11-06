@@ -48,16 +48,19 @@ set up: https://ammons-organization-1.gitbook.io/thehiddenshape/system-and-netwo
 >host instance
 ```bash
 # ping host 2 from host 1
-ping 30.1.1.2
-# check learned MAC addr
-ip neigh show
+/ # ping 30.1.1.2
+PING 30.1.1.2 (30.1.1.2): 56 data bytes
+64 bytes from 30.1.1.2: seq=0 ttl=64 time=0.325 ms
+64 bytes from 30.1.1.2: seq=1 ttl=64 time=1.441 ms
+
+# check learned MAC addr, this cmd displays the ARP/NDP cache
+/ # ip neigh show
+30.1.1.2 dev eth1 lladdr 02:42:2a:1f:32:01 used 0/0/0 probes 4 STALE
 ```
 
 ### VXLAN setup
 > VTEP instance
 ```bash
-# vxlan interfaces
-ip -d link show type vxlan
 # vxlan details
 ip -d link show vxlan10
 # VNI & params
