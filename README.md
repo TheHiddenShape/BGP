@@ -1,7 +1,7 @@
 # BGP EVPN VXLAN
 This project is divided into three parts: Part 1 covers GNS3 configuration with Docker, Part 2 explores VXLAN, and Part 3 focuses on discovering BGP with EVPN.
 
-You can find the complete documentation for this project at [https://ammons-organization-1.gitbook.io/thehiddenshape/system-and-networks/building-networks-with-gns3#installation-of-requirements](https://ammons-organization-1.gitbook.io/thehiddenshape/system-and-networks/building-networks-with-gns3#installation-of-requirements)
+You can find the complete documentation for this project at https://ammons-organization-1.gitbook.io/thehiddenshape/system-and-networks/building-networks-with-gns3
 
 The purpose of this README is to compile useful commands and demonstrations, along with the associated concepts for each part.
 
