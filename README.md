@@ -61,18 +61,22 @@ PING 30.1.1.2 (30.1.1.2): 56 data bytes
 ### VXLAN setup
 > VTEP instance
 ```bash
-# vxlan details
+# vxlan details static mode
 ip -d link show vxlan10
-# VNI & params
-bridge fdb show dev vxlan10
+3: vxlan10: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master br0 state UNKNOWN mode DEFAULT group default qlen 1000
+    link/ether 5a:e5:ab:1e:5e:4f brd ff:ff:ff:ff:ff:ff promiscuity 1 minmtu 68 maxmtu 65535 
+    vxlan id 10 remote 10.1.1.1 local 10.1.1.2 dev eth0 srcport 0 0 dstport 4789 ttl auto ageing 300 udpcsum noudp6zerocsumtx noudp6zerocsumrx 
+
+# vxlan details dynamic mode
+3: vxlan10: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue master br0 state UNKNOWN mode DEFAULT group default qlen 1000
+    link/ether 1a:06:49:ce:94:1f brd ff:ff:ff:ff:ff:ff promiscuity 1 minmtu 68 maxmtu 65535 
+    vxlan id 10 group 239.1.1.1 dev eth0 srcport 0 0 dstport 4789 ttl auto ageing 300 udpcsum noudp6zerocsumtx noudp6zerocsumrx
 ```
 ### Forwarding table
 > VTEP instance
 ```bash
 # show FDB
-bridge fdb show dev vxlan10
-# learned MAC addr
-bridge fdb show | grep <VNI>
+/ # bridge fdb show dev vxlan10
 ```
 
 ## Discovering BGP with EVPN
