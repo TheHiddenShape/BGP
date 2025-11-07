@@ -83,7 +83,7 @@ ip -d link show vxlan10
 ```
 
 ## Discovering BGP with EVPN
-In this section, we will deploy a BGP EVPN with VXLAN solution in a Spine-Leaf architecture. 1 RR, 3 leafs, each associated with 1 host.
+In this section, we will deploy a BGP EVPN VXLAN solution in a Spine-Leaf architecture. 1 RR, 3 leafs, each associated with 1 host.
 
 BGP EVPN (Ethernet VPN) is a control plane protocol that uses MP-BGP (Multi-Protocol BGP) to distribute MAC addresses, IP addresses, and other reachability information for overlay networks (typically VXLAN).
 
