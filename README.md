@@ -7,7 +7,7 @@ The purpose of this README is to compile useful commands and demonstrations, alo
 
 ## GNS3 configuration with Docker
 The first step is to configure our foundation machines, which will serve as the base for building our networks.
-We will need hosts and routers running FRRouting (FRR), an open-source routing protocol suite for Linux/Unix systems that implements various protocols such as BGP, OSPF and more.
+We will need hosts and routers running FRRouting (FRR), an open-source routing protocol suite for Linux/Unix systems that implements various protocols such as BGP, OSPF, IS-IS and more.
 
 set up: https://ammons-organization-1.gitbook.io/thehiddenshape/system-and-networks/building-networks-with-gns3#gns3-configuration-with-docker
 
@@ -39,6 +39,8 @@ PID   USER     COMMAND
 
 ## Discovering a VXLAN
 In this section, we set up a VXLAN (Virtual Extensible LAN) network topology. VXLAN is a tunneling technology that allows the creation of extended virtual local area networks (VLANs) over existing IP infrastructures. VXLAN encapsulates Layer 2 Ethernet frames within Layer 3 UDP packets, creating an overlay network that tunnels L2 traffic over an L3 underlay infrastructure, enabling scalable multi-tenant isolation across data centers by adding a 24-bit VXLAN Network Identifier (VNI) header.
+
+In this section, concerning the discovery, VXLAN relies on the data plane (flood & learn approach). This means discovery is reactive, depending on user-generated traffic that triggers ARP/ND requests.
 
 Our topology contains two remote hosts, each connected to their own router, with an L2 switch between the routers.
 
@@ -84,6 +86,8 @@ ip -d link show vxlan10
 In this section, we will deploy a BGP EVPN with VXLAN solution in a Spine-Leaf architecture. 1 RR, 3 leafs, each associated with 1 host.
 
 BGP EVPN (Ethernet VPN) is a control plane protocol that uses MP-BGP (Multi-Protocol BGP) to distribute MAC addresses, IP addresses, and other reachability information for overlay networks (typically VXLAN).
+
+In this architecture, BGP manages the MAC <-> IP <-> VTEP mappings instead of discovering them via the data plane as in the previous section. Each VTEP dynamically advertises its local information into BGP, and other VTEPs learn these mappings through the Route Reflector (RR).
 
 > In any VTEP instance, we ensure visibility of other VTEPs by identifying them through their loopback interface identifiers.
 ```bash
