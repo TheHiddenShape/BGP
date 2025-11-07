@@ -104,6 +104,9 @@ BGP EVPN (Ethernet VPN) is a control plane protocol that uses MP-BGP (Multi-Prot
 
 In this architecture, BGP manages the MAC <-> IP <-> VTEP mappings instead of discovering them via the data plane as in the previous section. Each VTEP dynamically advertises its local information into BGP, and other VTEPs learn these mappings through the Route Reflector (RR).
 
+OSPF builds the physical IP network between all fabric devices (spines and leafs). It uses link-state routing where each device knows the complete topology and calculates optimal paths using Dijkstra's algorithm.
+Its role is limited to distributing each leaf's loopback addresses and establishing the basic IP connectivity that enables VXLAN tunnels to form.
+
 > In any VTEP instance, we ensure visibility of other VTEPs by identifying them through their loopback interface identifiers.
 ```bash
 / # vtysh -c "show ip route"
