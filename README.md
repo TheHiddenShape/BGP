@@ -1,5 +1,11 @@
 # BGP EVPN VXLAN
-This project is divided into three parts: Part 1 covers GNS3 configuration with Docker, Part 2 explores VXLAN, and Part 3 focuses on discovering BGP with EVPN.
+
+The goal of this project is to design and configure three network topologies in GNS3 that implement VXLAN and BGP EVPN, using Docker containers as end hosts.
+The project is divided into three main parts:
+
+Part 1: Setting up and integrating Docker with GNS3
+Part 2: Exploring and configuring VXLAN
+Part 3: Implementing BGP EVPN with VXLAN in a Spine-Leaf arch
 
 You can find the complete documentation for this project at https://ammons-organization-1.gitbook.io/thehiddenshape/system-and-networks/building-networks-with-gns3
 
