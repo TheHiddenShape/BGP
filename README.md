@@ -46,7 +46,7 @@ PID   USER     COMMAND
 ## Discovering a VXLAN
 In this section, we set up a VXLAN (Virtual Extensible LAN) network topology. VXLAN is a tunneling technology that allows the creation of extended virtual local area networks (VLANs) over existing IP infrastructures. VXLAN encapsulates Layer 2 Ethernet frames within Layer 3 UDP packets, creating an overlay network that tunnels L2 traffic over an L3 underlay infrastructure, enabling scalable multi-tenant isolation across data centers by adding a 24-bit VXLAN Network Identifier (VNI) header.
 
-In this section, concerning the discovery, VXLAN relies on the data plane (flood & learn approach). This means discovery is reactive, depending on user-generated traffic that triggers ARP/ND requests.
+Concerning the discovery, VXLAN relies on the data plane (flood & learn approach). This means discovery is reactive, depending on user-generated traffic that triggers ARP/ND requests.
 
 Our topology contains two remote hosts, each connected to their own router, with an L2 switch between the routers.
 
