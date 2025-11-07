@@ -86,6 +86,15 @@ ip -d link show vxlan10
 ```bash
 # show FDB
 / # bridge fdb show dev vxlan10
+02:42:2a:1f:32:01 master br0 
+d2:95:f0:41:e5:3b master br0 
+02:42:f4:3f:96:01 master br0 
+a2:b9:fa:9d:67:58 vlan 1 master br0 permanent
+a2:b9:fa:9d:67:58 master br0 permanent
+00:00:00:00:00:00 dst 10.1.1.2 via eth0 self permanent
+02:42:2a:1f:32:01 dst 10.1.1.2 self 
+d2:95:f0:41:e5:3b dst 10.1.1.2 self 
+02:42:f4:3f:96:01 dst 10.1.1.2 self 
 ```
 
 ## Discovering BGP with EVPN
