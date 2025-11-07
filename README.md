@@ -1,6 +1,6 @@
 # BGP EVPN VXLAN
 
-The goal of this project is to design and configure three network topologies in GNS3 that implement VXLAN and BGP EVPN, using Docker containers as end hosts.
+The goal of this project is to design and configure three network topologies in GNS3 that implement VXLAN and BGP EVPN, using Docker containers as network devices.
 The project is divided into three main parts:
 
 Part 1: Setting up and integrating Docker with GNS3
