@@ -157,8 +157,9 @@ Neighbor        V         AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down Sta
 Total number of neighbors 1
 ```
 
-> [VTEP instance]
 This command allows us to check the BGP EVPN table, the routes used for VXLAN/L2VPN routing
+
+> [VTEP instance]
 ```bash
 / # vtysh -c "show bgp l2vpn evpn"
 BGP table version is 3, local router ID is 1.1.1.2
