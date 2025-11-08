@@ -130,12 +130,69 @@ Where n is the total number of nodes and C is the number of unique links, this r
 
 In order to generate a summary of the current bgp session & checking the state of our BGP pairs we use the following command
 
+> [VTEP instance]
 ```bash
 / # vtysh -c "show bgp summary"
+
+IPv4 Unicast Summary (VRF default):
+BGP router identifier 1.1.1.2, local AS number 1 vrf-id 0
+BGP table version 0
+RIB entries 0, using 0 bytes of memory
+Peers 1, using 717 KiB of memory
+
+Neighbor        V         AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down State/PfxRcd   PfxSnt Desc
+1.1.1.1         4          1        19        15        0    0    0 00:09:55            0        0 N/A
+
+Total number of neighbors 1
+
+L2VPN EVPN Summary (VRF default):
+BGP router identifier 1.1.1.2, local AS number 1 vrf-id 0
+BGP table version 0
+RIB entries 5, using 960 bytes of memory
+Peers 1, using 717 KiB of memory
+
+Neighbor        V         AS   MsgRcvd   MsgSent   TblVer  InQ OutQ  Up/Down State/PfxRcd   PfxSnt Desc
+1.1.1.1         4          1        19        15        0    0    0 00:09:55            4        2 N/A
+
+Total number of neighbors 1
 ```
 
+> [VTEP instance]
 This command allows us to check the BGP EVPN table, the routes used for VXLAN/L2VPN routing
 ```bash
 / # vtysh -c "show bgp l2vpn evpn"
+BGP table version is 3, local router ID is 1.1.1.2
+Status codes: s suppressed, d damped, h history, * valid, > best, i - internal
+Origin codes: i - IGP, e - EGP, ? - incomplete
+EVPN type-1 prefix: [1]:[EthTag]:[ESI]:[IPlen]:[VTEP-IP]:[Frag-id]
+EVPN type-2 prefix: [2]:[EthTag]:[MAClen]:[MAC]:[IPlen]:[IP]
+EVPN type-3 prefix: [3]:[EthTag]:[IPlen]:[OrigIP]
+EVPN type-4 prefix: [4]:[ESI]:[IPlen]:[OrigIP]
+EVPN type-5 prefix: [5]:[EthTag]:[IPlen]:[IP]
+
+   Network          Next Hop            Metric LocPrf Weight Path
+Route Distinguisher: 1.1.1.2:2
+*> [2]:[0]:[48]:[02:42:aa:1c:41:01]
+                    1.1.1.2                            32768 i
+                    ET:8 RT:1:10
+*> [3]:[0]:[32]:[1.1.1.2]
+                    1.1.1.2                            32768 i
+                    ET:8 RT:1:10
+Route Distinguisher: 1.1.1.3:2
+*>i[2]:[0]:[48]:[02:42:9c:53:e3:00]
+                    1.1.1.3                  0    100      0 i
+                    RT:1:10 ET:8
+*>i[3]:[0]:[32]:[1.1.1.3]
+                    1.1.1.3                  0    100      0 i
+                    RT:1:10 ET:8
+Route Distinguisher: 1.1.1.4:2
+*>i[2]:[0]:[48]:[02:42:e8:f7:47:00]
+                    1.1.1.4                  0    100      0 i
+                    RT:1:10 ET:8
+*>i[3]:[0]:[32]:[1.1.1.4]
+                    1.1.1.4                  0    100      0 i
+                    RT:1:10 ET:8
+
+Displayed 6 out of 6 total prefixes
 ```
 set up configuration: https://ammons-organization-1.gitbook.io/thehiddenshape/system-and-networks/building-networks-with-gns3#discovering-bgp-with-evpn
